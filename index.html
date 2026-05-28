@@ -10,6 +10,7 @@
             --card-bg: #111827;
             --accent-blue: #3b82f6;
             --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
             --accent-red: #ef4444;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
@@ -105,7 +106,7 @@
             letter-spacing: 1px;
         }
 
-        /* Sub-Intro Warning Section */
+        /* Threat Landscape Sub-Intro */
         .warning-box {
             background-color: rgba(239, 68, 68, 0.05);
             border: 1px solid rgba(239, 68, 68, 0.2);
@@ -128,7 +129,7 @@
             margin-bottom: 15px;
         }
 
-        /* Team Section Layout */
+        /* Team Section */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -185,7 +186,7 @@
             font-size: 0.95rem;
         }
 
-        /* Grid Frameworks */
+        /* Services Grid */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -228,6 +229,63 @@
             font-weight: bold;
             text-transform: uppercase;
         }
+
+        .badge.crypto {
+            background-color: rgba(139, 92, 246, 0.1);
+            color: var(--accent-purple);
+        }
+
+        /* Terminal Window Simulator */
+        .terminal-container {
+            margin: 50px auto 20px auto;
+            max-width: 800px;
+            background-color: #050505;
+            border-radius: 8px;
+            border: 1px solid #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background-color: #1a1a1a;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .term-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .dot-red { background-color: #ff5f56; }
+        .dot-yel { background-color: #ffbd2e; }
+        .dot-grn { background-color: #27c93f; }
+
+        .term-title {
+            margin: 0 auto;
+            color: #888;
+            font-size: 0.85rem;
+            font-family: monospace;
+            padding-right: 50px;
+        }
+
+        .terminal-body {
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #e5e5e5;
+            overflow-x: auto;
+        }
+
+        .term-prompt { color: var(--accent-green); font-weight: bold; }
+        .term-info { color: var(--accent-blue); }
+        .term-hash { color: #a8a8a8; font-size: 0.85rem; }
+        .term-success { color: var(--accent-green); font-weight: bold; }
 
         /* Pricing Matrix */
         .price-tag {
@@ -328,7 +386,6 @@
 </head>
 <body>
 
-    <!-- Sticky Navigation Matrix -->
     <nav>
         <div class="nav-container">
             <a href="#" class="nav-logo">FALLEN LIGHT R&amp;D</a>
@@ -343,20 +400,17 @@
     </nav>
 
     <div class="container">
-        <!-- Main Top Header -->
         <header>
             <h1>FALLEN LIGHT STUDIOS</h1>
             <p>Research &amp; Development Division</p>
         </header>
 
-        <!-- Threat Landscape Sub-Intro -->
         <div class="warning-box">
             <h3>CRITICAL LANDSCAPE ADVISORY: THE REALITY OF DATA EXPOSURE</h3>
             <p>Modern system architecture remains systematically vulnerable to silent, unauthenticated perimeter leaks. Data exposure is not just a technical failure—it is an existential crisis. When structural blueprints, configurations, and sensitive records leak into public-facing environments, they are immediately logged, aggregated, and scraped by unauthorized third-party engines.</p>
             <p><strong>Why Comprehensive Auditing is Mandatory:</strong> Unchecked infrastructure risk leaves the doorway open to catastrophic consumer privacy violations, stripping users of their autonomy and causing deep public exposure and humiliation. For organizations, ignoring these blind spots results in immediate regulatory scrutiny, severe operational collapse, and devastating, multi-million dollar class-action lawsuits. Our proactive perimeter threat audits act as the definitive buffer, containing the threat landscape before an exposure escalates into a public crisis.</p>
         </div>
 
-        <!-- About Us Section -->
         <section id="about">
             <h2 class="section-title">About Our Operations</h2>
             <p style="color: var(--text-muted); text-align: center; max-width: 800px; margin: 0 auto 30px auto; font-size: 1.1rem;">
@@ -364,13 +418,10 @@
             </p>
         </section>
 
-        <!-- Founders & Executive Leadership Section -->
         <section id="team">
             <h2 class="section-title">Executive Leadership &amp; Founders</h2>
             <div class="team-grid">
-                <!-- Chad Beckett -->
                 <div class="team-card">
-                    <!-- Integrated Headshot Link for Chad -->
                     <div class="profile-pic-placeholder">
                         <img src="chad.jpg" alt="Chad Beckett">
                     </div>
@@ -379,9 +430,7 @@
                     <p>Directs baseline perimeter architecture checks, query compilation scripts, and handles external threat matrix mapping routines across live infrastructure targets.</p>
                 </div>
 
-                <!-- Chey-Anne Selmon -->
                 <div class="team-card">
-                    <!-- Photo Integration Node for Chey-Anne -->
                     <div class="profile-pic-placeholder">
                         <span>[ Place Photo: chey-anne.jpg ]</span>
                     </div>
@@ -392,38 +441,65 @@
             </div>
         </section>
 
-        <!-- Services Section -->
         <section id="services">
-            <h2 class="section-title">Core Services</h2>
+            <h2 class="section-title">Core Services &amp; IP Frameworks</h2>
             <div class="grid">
                 <div class="card">
-                    <div class="badge">Auditing</div>
+                    <div class="badge crypto">Post-Quantum Crypto</div>
                     <br><br>
-                    <h3>Shadow Pathway Sweeps</h3>
-                    <p>Comprehensive external perimeter queries identifying exposed environments, backup matrices, configuration leaks, and active system vulnerabilities.</p>
+                    <h3>Zero-Knowledge Matrix Upgrades</h3>
+                    <p>Deploying advanced mathematical matrices to secure enterprise server nodes. Provides zero-knowledge verification frameworks designed to withstand modern decryption architectures.</p>
                 </div>
 
                 <div class="card">
-                    <div class="badge">Containment</div>
+                    <div class="badge">Remediation</div>
                     <br><br>
-                    <h3>AI Scraper Mitigations</h3>
-                    <p>Designing targeted directory permission rules and crawler isolation layers to securely shield corporate assets from automated model harvesting vectors.</p>
+                    <h3>External Public Data Scrubbers</h3>
+                    <p>Continuous active scrapers designed to sweep the public web, caching links, and target storage matrices for compromised corporate records, neutralizing public exposure vectors post-breach.</p>
                 </div>
 
                 <div class="card">
-                    <div class="badge">Patches</div>
+                    <div class="badge">IP Isolation</div>
                     <br><br>
-                    <h3>Environment Optimization</h3>
-                    <p>Custom deployment scripting designed to fix terminal interface loops, local terminal bottlenecks, and variable configuration bugs.</p>
+                    <h3>Intellectual Property Guarding</h3>
+                    <p>Hardening operational source repositories and proprietary software logic paths behind multi-layered defensive environments to prevent reverse engineering.</p>
                 </div>
             </div>
+
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <div class="term-dot dot-red"></div>
+                    <div class="term-dot dot-yel"></div>
+                    <div class="term-dot dot-grn"></div>
+                    <div class="term-title">fls-terminal ~ dev/prototype</div>
+                </div>
+                <div class="terminal-body">
+                    <span class="term-prompt">~$</span> python lattice_test.py<br>
+                    <span class="term-info">[*]</span> Initializing R&amp;D Cryptographic Prototype...<br><br>
+                    
+                    [1] Generating high-dimensional key matrices...<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;-> Key matrices successfully generated.<br><br>
+                    
+                    [2] Executing Key Encapsulation (Sender side)...<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;-> Generated Shared Secret: <span class="term-hash">51e693d24f5d79303e24e64afe0b5288...</span><br><br>
+
+                    [3] Executing Key Decapsulation (Receiver side)...<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;-> Extracted Shared Secret: <span class="term-hash">51e693d24f5d79303e24e64afe0b5288...</span><br><br>
+
+                    <span class="term-success">[SUCCESS]</span> Mathematical Key Exchange Complete!<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The shared secret matches perfectly across the matrix.<br><br>
+
+                    [4] Testing secure data pipeline using the generated secret...<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;-> Encrypted Payload: <span class="term-hash">4f9746b50b8d01ae7a31d0b60194ee9486d94aed...</span><br>
+                    <span class="term-prompt">~$</span> <span style="animation: blink 1s step-end infinite;">█</span>
+                </div>
+            </div>
+            <style>@keyframes blink { 50% { opacity: 0; } }</style>
         </section>
 
-        <!-- Pricing Section -->
         <section id="pricing">
             <h2 class="section-title">Service Tiers &amp; Retainers</h2>
             <div class="grid">
-                <!-- Tier 1 -->
                 <div class="card">
                     <div class="badge">Standard</div>
                     <br><br>
@@ -433,32 +509,28 @@
                     <a href="https://www.paypal.com" target="_blank" class="pay-btn">Initialize Audit</a>
                 </div>
 
-                <!-- Tier 2 -->
                 <div class="card">
                     <div class="badge">Corporate</div>
                     <br><br>
                     <h3>Full Containment Matrix</h3>
-                    <p>Complete perimeter check combined with direct assistance to deploy exclusion firewalls, robots mapping profiles, and structured CISA-standard tracking.</p>
+                    <p>Complete perimeter check combined with direct assistance to deploy exclusion firewalls, zero-knowledge upgrades, and structured tracking.</p>
                     <div class="price-tag">$850 <span>/ Monthly</span></div>
                     <a href="https://www.paypal.com" target="_blank" class="pay-btn premium">Retain Services</a>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact">
             <h2 class="section-title">Secure Communications Node</h2>
             <div class="contact-wrapper">
                 <p style="color: var(--text-muted);">Reach out directly through our encrypted channels to resolve pending compliance advisories or initiate customized optimization patching:</p>
                 
                 <div class="contact-channels">
-                    <!-- Secure Emails -->
                     <div class="contact-node">
                         <h4>Secure Mailboxes</h4>
                         <a href="mailto:fallenlightstudios@proton.me">fallenlightstudios@proton.me</a>
                         <a href="mailto:fallenlightstudios.cbeckett@proton.me">fallenlightstudios.cbeckett@proton.me</a>
                     </div>
-                    <!-- Telephone Nodes -->
                     <div class="contact-node">
                         <h4>Direct Comms Lines</h4>
                         <p>304-516-1508</p>
@@ -469,7 +541,6 @@
             </div>
         </section>
 
-        <!-- Footer -->
         <footer>
             <p>&copy; 2026 Fallen Light Studios LLC. All Rights Reserved.</p>
             <p style="margin-top: 5px; color: #555;">SecOps Frameworks &amp; Localized Development Utilities</p>
