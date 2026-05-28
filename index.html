@@ -9,6 +9,7 @@
             --bg-color: #0a0f1d;
             --card-bg: #111827;
             --accent-blue: #3b82f6;
+            --accent-green: #10b981;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
             --border-color: #1f2937;
@@ -25,22 +26,60 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 0 20px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation Matrix */
+        nav {
+            background-color: rgba(17, 24, 39, 0.8);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
+        .nav-logo {
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
         header {
-            padding: 60px 0 40px 0;
-            border-bottom: 1px solid var(--border-color);
+            padding: 80px 0 40px 0;
             text-align: center;
+            border-bottom: 1px solid var(--border-color);
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             letter-spacing: 2px;
             color: #fff;
             margin-bottom: 10px;
@@ -53,23 +92,56 @@
             letter-spacing: 4px;
         }
 
-        .hero {
-            padding: 60px 0;
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        /* About Us Layout styling */
+        .about-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        .about-image-container {
+            flex: 1;
+            min-width: 300px;
             text-align: center;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 30px auto;
+        .display-img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
         }
 
+        /* Grid Frameworks */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
         }
 
         .card {
@@ -77,6 +149,7 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 30px;
+            position: relative;
             transition: transform 0.2s, border-color 0.2s;
         }
 
@@ -108,6 +181,68 @@
             text-transform: uppercase;
         }
 
+        /* Pricing Matrix & Payment System */
+        .price-tag {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            margin: 15px 0;
+        }
+
+        .price-tag span {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .pay-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: var(--accent-blue);
+            color: #fff;
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: background-color 0.2s;
+            margin-top: 20px;
+        }
+
+        .pay-btn:hover {
+            background-color: #2563eb;
+        }
+
+        .pay-btn.premium {
+            background-color: var(--accent-green);
+        }
+
+        .pay-btn.premium:hover {
+            background-color: #059669;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .contact-email {
+            display: inline-block;
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
         footer {
             text-align: center;
             padding: 40px 0;
@@ -119,45 +254,100 @@
 </head>
 <body>
 
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">FALLEN LIGHT R&amp;D</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <header>
             <h1>FALLEN LIGHT STUDIOS</h1>
-            <p>Research & Development</p>
+            <p>Research &amp; Development Matrix</p>
         </header>
 
-        <section class="hero">
-            <p>Engineering specialized utility toolsets, baseline perimeter compliance auditors, and local environment deployment rigs for modern security environments.</p>
+        <section id="about">
+            <h2 class="section-title">About Our Division</h2>
+            <div class="about-wrapper">
+                <div class="about-text">
+                    <p>Fallen Light Studios R&amp;D operates at the intersection of data safety, localized system automation, and external parameter testing. We build clean, lightweight utilities engineered to run seamlessly across low-overhead configurations—including mobile environments and remote runtime structures.</p>
+                    <p>Our core mission is perimeter optimization: tracking unintended exposures, hardening access parameters, and providing organizations with explicit documentation timelines to defend their digital infrastructure against unauthorized data extraction pipelines.</p>
+                </div>
+                <div class="about-image-container">
+                    <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=500" alt="SecOps Interface Graphic" class="display-img">
+                </div>
+            </div>
         </section>
 
-        <main class="grid">
-            <div class="card">
-                <div class="badge">Utility Fix</div>
-                <br><br>
-                <h3>Antigravity Lockout IDE Fix</h3>
-                <p>A specialized looping optimization patch developed for power-users to seamlessly resolve interface looping constraints within local development rigs.</p>
-            </div>
+        <section id="services">
+            <h2 class="section-title">Core Services</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="badge">Auditing</div>
+                    <br><br>
+                    <h3>Shadow Pathway Sweeps</h3>
+                    <p>Comprehensive external perimeter queries identifying exposed environments, backup matrices, configuration leaks, and active system vulnerabilities.</p>
+                </div>
 
-            <div class="card">
-                <div class="badge">SecOps</div>
-                <br><br>
-                <h3>Perimeter Risk Auditing</h3>
-                <p>Automated external perimeter sweeps monitoring shadow data pathways, structural file exposures, and commercial foundational model AI scraping vulnerabilities.</p>
-            </div>
+                <div class="card">
+                    <div class="badge">Containment</div>
+                    <br><br>
+                    <h3>AI Scraper Mitigations</h3>
+                    <p>Designing targeted directory permission rules and crawler isolation layers to securely shield corporate assets from automated model harvesting vectors.</p>
+                </div>
 
-            <div class="card">
-                <div class="badge">Protocols</div>
-                <br><br>
-                <h3>Pegasus Protocol Architecture</h3>
-                <p>Next-generation localized environment scripts designed to streamline mobile runtime utilities and remote execution pipelines securely.</p>
+                <div class="card">
+                    <div class="badge">Patches</div>
+                    <br><br>
+                    <h3>Environment Optimization</h3>
+                    <p>Custom deployment scripting designed to fix terminal interface loops, local terminal bottlenecks, and variable configuration bugs.</p>
+                </div>
             </div>
-        </main>
+        </section>
+
+        <section id="pricing">
+            <h2 class="section-title">Service Tiers &amp; Retainers</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="badge">Standard</div>
+                    <br><br>
+                    <h3>Perimeter Evaluation</h3>
+                    <p>A comprehensive automated perimeter check checking active data paths, structural endpoints, and delivering a clean PDF compliance report.</p>
+                    <div class="price-tag">$250 <span>/ Flat Rate</span></div>
+                    <a href="https://www.paypal.com" target="_blank" class="pay-btn">Initialize Audit</a>
+                </div>
+
+                <div class="card">
+                    <div class="badge">Corporate</div>
+                    <br><br>
+                    <h3>Full Containment Matrix</h3>
+                    <p>Complete perimeter check combined with direct assistance to deploy exclusion firewalls, robots mapping profiles, and structured CISA-standard tracking.</p>
+                    <div class="price-tag">$850 <span>/ Monthly</span></div>
+                    <a href="https://www.paypal.com" target="_blank" class="pay-btn premium">Retain Services</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Secure Contact Node</h2>
+            <div class="contact-info">
+                <p>Have an advisory deadline outstanding or require custom optimization patches for your environment? Reach out directly to our operational mailbox:</p>
+                <a href="mailto:research@fallenlightstudios@proton.me" class="contact-email">research@fallenlightstudios@proton.me</a>
+                <p style="margin-top: 25px; font-size: 0.85rem; color: #555;">Communications processed under standard security non-disclosure frameworks.</p>
+            </div>
+        </section>
 
         <footer>
             <p>&copy; 2026 Fallen Light Studios LLC. All Rights Reserved.</p>
-            <p style="margin-top: 5px; color: #555;">SecOps Frameworks & Localized Development Utilities</p>
+            <p style="margin-top: 5px; color: #555;">SecOps Frameworks &amp; Localized Development Utilities</p>
         </footer>
     </div>
 
 </body>
 </html>
-
