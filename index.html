@@ -5,12 +5,15 @@
 # ZERO CONSENT is granted for unauthorized telemetry, AI training, data scraping, 
 # network interception, or commercial harvesting. 
 # ==============================================================================
-<!DOCTYPE html>
+
+<!DOC
+TYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fallen Light Studios | Research & Development</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
             --bg-color: #0a0f1d;
@@ -136,12 +139,18 @@
             margin-bottom: 15px;
         }
 
-        /* Team Section */
+        /* Team Section - FORCED SIDE-BY-SIDE */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 1fr;
             gap: 30px;
             margin-top: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr 1fr; /* Forces two columns on desktop */
+            }
         }
 
         .team-card {
@@ -397,11 +406,11 @@
         <div class="nav-container">
             <a href="#" class="nav-logo">FALLEN LIGHT R&amp;D</a>
             <div class="nav-links">
+                <a href="#dmarc-audit">Audits</a>
                 <a href="#about">About</a>
                 <a href="#team">Founders</a>
                 <a href="#services">Services</a>
                 <a href="#pricing">Pricing</a>
-                <a href="#contact">Contact</a>
             </div>
         </div>
     </nav>
@@ -417,6 +426,45 @@
             <p>Modern system architecture remains systematically vulnerable to silent, unauthenticated perimeter leaks. Data exposure is not just a technical failure—it is an existential crisis. When structural blueprints, configurations, and sensitive records leak into public-facing environments, they are immediately logged, aggregated, and scraped by unauthorized third-party engines.</p>
             <p><strong>Why Comprehensive Auditing is Mandatory:</strong> Unchecked infrastructure risk leaves the doorway open to catastrophic consumer privacy violations, stripping users of their autonomy and causing deep public exposure and humiliation. For organizations, ignoring these blind spots results in immediate regulatory scrutiny, severe operational collapse, and devastating, multi-million dollar class-action lawsuits. Our proactive perimeter threat audits act as the definitive buffer, containing the threat landscape before an exposure escalates into a public crisis.</p>
         </div>
+
+        <section id="dmarc-audit" style="border-top: 1px solid var(--border-color); padding-top: 60px;">
+            <h2 class="section-title" style="color: var(--accent-red);">SECURE YOUR DOMAIN AGAINST SPOOFING</h2>
+            <p style="color: var(--text-muted); text-align: center; max-width: 800px; margin: 0 auto 40px auto; font-size: 1.1rem;">
+                Email spoofing is the primary vector for corporate data breaches. Our automated DMARC/SPF Shadow Audit interrogates your domain's global DNS records to identify critical vulnerabilities before they are exploited.
+            </p>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: flex-start; margin-bottom: 20px;">
+                
+                <div style="background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 30px; max-width: 500px; flex: 1 1 300px;">
+                    <h3 style="color: var(--accent-blue); margin-bottom: 20px; text-transform: uppercase;">How to Initiate Protocol</h3>
+                    <ul style="color: var(--text-muted); margin-left: 20px; line-height: 1.8; list-style-type: square;">
+                        <li>Enter your target domain and email in the secure intake module.</li>
+                        <li>Click <strong>"Initialize Protocol"</strong> to generate your unique 4-digit Invoice Code.</li>
+                        <li>Send exactly <strong style="color: #fff;">$5.00</strong> via Cash App to <strong style="color: var(--accent-green);">$FallenLightStudios</strong>.</li>
+                        <li><strong>CRITICAL:</strong> You must put <em>only</em> your 4-digit code in the Cash App note.</li>
+                        <li>Our background daemon will automatically detect the payment, execute the audit, and email the PDF report directly to you.</li>
+                    </ul>
+                </div>
+
+                <div id="fls-audit-module" style="background: #050505; padding: 30px; border: 1px solid var(--accent-blue); border-radius: 8px; text-align: center; max-width: 400px; flex: 1 1 300px; box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);">
+                    <h3 style="margin-top: 0; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Request Shadow Audit</h3>
+                    
+                    <input type="email" id="emailInput" placeholder="your-email@proton.me" style="width: 100%; padding: 12px; margin: 15px 0 10px 0; background: #1a1a1a; border: 1px solid var(--border-color); color: #fff; text-align: center; font-family: monospace;">
+                    
+                    <input type="text" id="domainInput" placeholder="target-company.com" style="width: 100%; padding: 12px; margin: 0 0 20px 0; background: #1a1a1a; border: 1px solid var(--border-color); color: #fff; text-align: center; font-family: monospace;">
+                    
+                    <button id="initButton" onclick="generateInvoice()" style="background: var(--accent-blue); color: #fff; border: none; padding: 12px 24px; font-weight: bold; cursor: pointer; width: 100%; border-radius: 4px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;">Initialize Protocol</button>
+
+                    <div id="checkout" style="display: none; margin-top: 25px; border-top: 1px dashed var(--border-color); padding-top: 25px;">
+                        <h4 style="color: var(--accent-green); margin-bottom: 10px;">TARGET ACQUIRED</h4>
+                        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 10px;">Send exactly <strong>$5.00</strong> via Cash App to <strong style="color: #fff;">$FallenLightStudios</strong>.</p>
+                        <p style="color: var(--text-muted); font-size: 14px;">Put this exact Code in the "For" note:</p>
+                        <div style="font-size: 28px; font-weight: bold; color: #fff; background: #000; border: 1px solid var(--accent-blue); padding: 10px; margin: 15px auto; width: fit-content; letter-spacing: 4px;" id="invoiceDisplay">----</div>
+                        <p style="font-size: 12px; color: var(--accent-red); margin-top: 15px;">WARNING: Do not include any other text in the note.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section id="about">
             <h2 class="section-title">About Our Operations</h2>
@@ -563,5 +611,48 @@
         </footer>
     </div>
 
+    <script>
+        // PASTE YOUR PUBLIC ANON KEY BELOW (Keep the quotes)
+        const supabaseClient = supabase.createClient('https://knponymlodvvsnvljrgl.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtucG9ueW1sb2R2dnNudmxqcmdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5ODk2NTgsImV4cCI6MjA5NTU2NTY1OH0.zYsSa0q3XNwhZ4hPgxUvaE3cpGBoj8TEI3vWscy8Rsk');
+
+        async function generateInvoice() {
+            const domainInput = document.getElementById('domainInput');
+            const emailInput = document.getElementById('emailInput');
+            const button = document.getElementById('initButton');
+            
+            let domain = domainInput.value.trim().replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
+            let email = emailInput.value.trim();
+            
+            if (!domain || !email) { 
+                alert("[-] Error: Both Email and Target Domain are required."); 
+                return; 
+            }
+
+            button.innerText = "UPLINKING..."; 
+            button.disabled = true;
+            
+            const invoiceCode = Math.floor(1000 + Math.random() * 9000).toString();
+
+            const { error } = await supabaseClient.from('audits_intake').insert([{ 
+                domain: domain, 
+                client_email: email,
+                invoice_code: invoiceCode 
+            }]);
+
+            if (error) { 
+                alert("[-] Database uplink failed. Check console for details."); 
+                console.error("Supabase Error:", error);
+                button.innerText = "INITIALIZE PROTOCOL"; 
+                button.disabled = false; 
+                return; 
+            }
+
+            document.getElementById('invoiceDisplay').innerText = "#" + invoiceCode;
+            document.getElementById('checkout').style.display = 'block';
+            domainInput.disabled = true; 
+            emailInput.disabled = true; 
+            button.style.display = 'none';
+        }
+    </script>
 </body>
 </html>
