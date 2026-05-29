@@ -1,10 +1,3 @@
-# ==============================================================================
-# EXPLICIT NON-CONSENT & PROPRIETARY NOTICE
-# Copyright (c) 2026 Fallen Light Studios LLC. All Rights Reserved.
-# This architecture, logic, and intellectual property are strictly confidential.
-# ZERO CONSENT is granted for unauthorized telemetry, AI training, data scraping, 
-# network interception, or commercial harvesting. 
-# ==============================================================================
 
 <!DOC
 TYPE html>
@@ -611,48 +604,48 @@ TYPE html>
         </footer>
     </div>
 
-    <script>
-        // PASTE YOUR PUBLIC ANON KEY BELOW (Keep the quotes)
-        const supabaseClient = supabase.createClient('https://knponymlodvvsnvljrgl.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtucG9ueW1sb2R2dnNudmxqcmdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5ODk2NTgsImV4cCI6MjA5NTU2NTY1OH0.zYsSa0q3XNwhZ4hPgxUvaE3cpGBoj8TEI3vWscy8Rsk');
+    <input type="text" id="cashtagInput" placeholder="Your $Cashtag" style="width: 100%; padding: 12px; margin: 0 0 10px 0; background: #1a1a1a; border: 1px solid var(--border-color); color: #fff; text-align: center; font-family: monospace;">
 
-        async function generateInvoice() {
-            const domainInput = document.getElementById('domainInput');
-            const emailInput = document.getElementById('emailInput');
-            const button = document.getElementById('initButton');
-            
-            let domain = domainInput.value.trim().replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
-            let email = emailInput.value.trim();
-            
-            if (!domain || !email) { 
-                alert("[-] Error: Both Email and Target Domain are required."); 
-                return; 
-            }
+<script>
+    // PASTE YOUR PUBLIC ANON KEY BELOW
+    const supabaseClient = supabase.createClient('https://knponymlodvvsnvljrgl.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtucG9ueW1sb2R2dnNudmxqcmdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5ODk2NTgsImV4cCI6MjA5NTU2NTY1OH0.zYsSa0q3XNwhZ4hPgxUvaE3cpGBoj8TEI3vWscy8Rsk');
 
-            button.innerText = "UPLINKING..."; 
-            button.disabled = true;
-            
-            const invoiceCode = Math.floor(1000 + Math.random() * 9000).toString();
-
-            const { error } = await supabaseClient.from('audits_intake').insert([{ 
-                domain: domain, 
-                client_email: email,
-                invoice_code: invoiceCode 
-            }]);
-
-            if (error) { 
-                alert("[-] Database uplink failed. Check console for details."); 
-                console.error("Supabase Error:", error);
-                button.innerText = "INITIALIZE PROTOCOL"; 
-                button.disabled = false; 
-                return; 
-            }
-
-            document.getElementById('invoiceDisplay').innerText = "#" + invoiceCode;
-            document.getElementById('checkout').style.display = 'block';
-            domainInput.disabled = true; 
-            emailInput.disabled = true; 
-            button.style.display = 'none';
+    async function generateInvoice() {
+        const domainInput = document.getElementById('domainInput');
+        const emailInput = document.getElementById('emailInput');
+        const cashtagInput = document.getElementById('cashtagInput');
+        const button = document.getElementById('initButton');
+        
+        let domain = domainInput.value.trim().replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
+        let email = emailInput.value.trim();
+        let cashtag = cashtagInput.value.trim().replace('$', ''); // Strips the $ if they type it, to keep database clean
+        
+        if (!domain || !email || !cashtag) { 
+            alert("[-] Error: Domain, Email, and $Cashtag are all required."); 
+            return; 
         }
-    </script>
+
+        button.innerText = "UPLINKING..."; button.disabled = true;
+        const invoiceCode = Math.floor(1000 + Math.random() * 9000).toString();
+
+        const { error } = await supabaseClient.from('audits_intake').insert([{ 
+            domain: domain, 
+            client_email: email,
+            cashtag: cashtag,
+            invoice_code: invoiceCode 
+        }]);
+
+        if (error) { 
+            alert("[-] Database uplink failed."); 
+            button.innerText = "INITIALIZE PROTOCOL"; button.disabled = false; return; 
+        }
+
+        document.getElementById('invoiceDisplay').innerText = "#" + invoiceCode;
+        document.getElementById('checkout').style.display = 'block';
+        domainInput.disabled = true; emailInput.disabled = true; cashtagInput.disabled = true; 
+        button.style.display = 'none';
+    }
+</script>
+
 </body>
 </html>
